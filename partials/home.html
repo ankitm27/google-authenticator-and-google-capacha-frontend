@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="" ng-show="isLoggedin == true">
+    <br>
+    <div class="col-md-12">
+      <div ng-show="isWalletExists == false">
+      <button type="button" class="btn btn-default" ng-click="generateWallet()">Generate wallet</button>
+      </div>
+      <div ng-show="isWalletExists == true" class="border border-dark">
+        <p>Wallet address: <strong>{{address}}</strong></p>
+    </div>
+      </div>
+    <br>
+    <div class="col-md-12">
+      <a href="#" class= "btn btn-success" ng-click="loggedout();">Log out</a>
+    </div>
+  </div>
+  <div class="" ng-show="isLoggedin == false">
+    <br>
+    <div class="col-md-12">
+      <a href="/#!/login/" class="btn btn-success">Log in</a>
+      <a href="/#!/signup/" class="btn btn-success">Sign up</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container" ng-controller="signupController">
+  <div class="alert alert-success alert-dismissable" ng-show="isSuccess == true">
+    <a class="close" ng-click="removeAlert();">&times;</a>
+    <strong>Success!</strong> {{success}} <br>
+    <strong> Please add this QR code into Google Authenticator app. Without this you are not able to login.</strong>
+  </div>
+  <div class="alert alert-danger alert-dismissable" ng-show="isError == true">
+    <a class="close" ng-click="removeAlert();">&times;</a>
+    <strong>Error!</strong> {{error}}
+  </div>
+  <form name="signupForm" ng-show="ga_authenticator == false && isLoggedin == false">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" name="email" class="form-control" id="email" ng-model="email" required>
+      <span ng-show="signupForm.email.$error.required && signupForm.email.$touched">Email required.</span>
+      <span ng-show="signupForm.email.$error.email && signupForm.email.$touched">Invalid email.</span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" name="password" class="form-control" id="password" ng-model="password" required>
+      <span ng-show="signupForm.password.$invalid && signupForm.password.$touched">Password required.</span>
+    </div>
+    <div class="form-group">
+      <label for="confirm_password">Confirm password:</label>
+      <input type="password" name="confirm_password" class="form-control" id="confirm_password" ng-model="confirm_password" required>
+      <span ng-show="signupForm.confirm_password.$invalid && signupForm.confirm_password.$touched">Password required.</span>
+    </div>
+
+    <div vc-recaptcha key="publicKey"></div>
+    <button type="submit" ng-disabled="signupForm.email.$invalid || signupForm.password.$invalid || signupForm.password.$invalid" class="btn btn-success" ng-click="submitForm()">Submit</button>
+  </form>
+  <div class="col-md-12" ng-show="ga_authenticator == false && isLoggedin == true">
+    <p>You are already logged in.</p>
+  </div>
+  <div ng-show="ga_authenticator == true" class="col-md-12">
+    <div>
+      <div class="col-md-12">
+        <strong>Secret: {{ga_secret}}</strong>
+      </div>
+      <div class="col-md-12">
+        <p><strong>Scan QR Code through google authenticator app</strong></p>
+        <div class="col-md-12">
+          <qrcode size=250 data="{{qr_url}}"></qrcode>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="/#!/login/" class="btn btn-link" ng-show="ga_authenticator == true">Log in</a>
+</div>
+</body>

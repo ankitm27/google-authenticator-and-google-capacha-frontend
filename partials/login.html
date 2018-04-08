@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="alert alert-success alert-dismissable" ng-show="isSuccess == true">
+    <a class="close" ng-click="removeAlert();">&times;</a>
+    <strong>Success!</strong> {{success}}
+  </div>
+  <div class="alert alert-danger alert-dismissable" ng-show="isError == true">
+    <a class="close" ng-click="removeAlert();">&times;</a>
+    <strong>Error!</strong> {{error}}
+  </div>
+
+  <form name="authenticateForm" ng-show="isAuthenticated == false && isLoggedin == false">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" name="email" class="form-control" id="email" ng-model="email" required>
+      <span ng-show="authenticateForm.email.$error.required && authenticateForm.email.$touched">Email required.</span>
+      <span ng-show="authenticateForm.email.$error.email && authenticateForm.email.$touched">Invalid email.</span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" name="password" class="form-control" id="password" ng-model="password" required>
+      <span ng-show="authenticateForm.password.$invalid && authenticateForm.password.$touched">Password required.</span>
+    </div>
+    <button type="submit" ng-disabled="authenticateForm.email.$invalid || authenticateForm.password.$invalid" class="btn btn-success" ng-click="submitForm()">Submit</button>
+  </form>
+  <form name="loginForm" ng-show="isAuthenticated == true && isLoggedin == false">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" name="email" class="form-control" ng-model="email" disabled="disabled">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" name="password" class="form-control" ng-model="password" disabled="disabled">
+    </div>
+    <div class="form-group">
+      <label for="otp">OTP:</label>
+      <input type="number" name="otp" minlength="6" maxlength="6" class="form-control" id="otp" ng-model="otp" required>
+      <span ng-show="loginForm.otp.$error.required && loginForm.otp.$touched">OTP required.</span>
+    </div>
+    <button type="submit" ng-disabled="loginForm.otp.$invalid" class="btn btn-success" ng-click="submitLoginForm()">Submit</button>
+  </form>
+  </div>
