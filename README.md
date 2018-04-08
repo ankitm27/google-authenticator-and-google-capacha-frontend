@@ -11,9 +11,11 @@ Two factor authentication is added with google authenticator.
 # Installation Steps
 
 Install pm2 globally 
+
 npm install pm2 -g
 
 Clone the repo 
+
 git clone https://github.com/ankitm27/koinok_frontend
 
 
