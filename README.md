@@ -15,7 +15,7 @@ npm install pm2 -g
 
 Clone the repo 
 
-git clone https://github.com/ankitm27/koinok_frontend
+git clone https://github.com/ankitm27/koinok_frontend.git
 
 
 Installation command
