@@ -1,5 +1,4 @@
-# koinok_app
-#koinok_frontend
+# koinok_frontend
 
 Basically the project is based on given assignment. In this project I tried to fullfill all frontend requirement of assigment.
 
