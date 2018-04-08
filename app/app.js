@@ -16,10 +16,6 @@ app.config(function ($routeProvider) {
             templateUrl: 'partials/login.html',
             controller: 'loginController'
         })
-        .when('/new', {
-            templateUrl: 'partials/new.html',
-            controller: 'newController'
-        })
 });
 
 //service to access backend api
@@ -55,9 +51,9 @@ app.factory("services", ["$http",
 ]);
 
 // create the controller and inject Angular's $scope
-app.controller('homeController', function ($scope, services) {
-    $scope.message = 'Everyone come and see how good I look!';
-});
+//app.controller('homeController', function ($scope, services) {
+//    $scope.message = 'Everyone come and see how good I look!';
+//});
 
 
 //check user is logged in
