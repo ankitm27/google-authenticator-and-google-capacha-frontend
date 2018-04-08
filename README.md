@@ -28,7 +28,7 @@ For running frontend server run pm2 start server(pm2 is node process manager)
 
 now we can access the front-end server at 8080 port
 
-For checking frontend server is running hit the http://ip/#!/ and it will open the home page
+For checking frontend server is running hit the http://ip:8080/#!/ and it will open the home page
 
 Nginx proxy is used to deployed the app through which you can access the app via port 80. 
 
