@@ -1,5 +1,7 @@
 var app = angular.module('TaskManager', ['ngRoute', 'monospaced.qrcode', 'vcRecaptcha']);
 
+
+// routes provides routes different html according to different url
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -20,7 +22,7 @@ app.config(function ($routeProvider) {
         })
 });
 
-
+//service to access backend api
 app.factory("services", ["$http",
     function ($http) {
         //var socket = "http://13.127.73.144";
@@ -57,6 +59,8 @@ app.controller('homeController', function ($scope, services) {
     $scope.message = 'Everyone come and see how good I look!';
 });
 
+
+//check user is logged in
 var isLoggedin = function () {
     if (window.localStorage['user'] != undefined) {
         return true;
@@ -64,6 +68,7 @@ var isLoggedin = function () {
     return false;
 }
 
+//find logged in user
 var loggedinUser = function () {
     if (isLoggedin()) {
         return angular.fromJson(window.localStorage['user']);
@@ -71,15 +76,19 @@ var loggedinUser = function () {
     return {};
 }
 
+//find token of logged in user
 var getToken = function () {
     var data = loggedinUser();
     return data.token;
 }
 
+//logged out user
 var loggedout = function () {
     window.localStorage.removeItem('user');
 }
 
+
+//signup controller
 app.controller('signupController', function ($scope, $location, services, vcRecaptchaService) {
     $scope.publicKey = "6LeuvFEUAAAAADqBBbQQ0tFYnuBpP7dVhDPXB8cM";
     $scope.isLoggedin = isLoggedin();
@@ -124,6 +133,7 @@ app.controller('signupController', function ($scope, $location, services, vcReca
     }
 });
 
+//login controller
 app.controller('loginController', function ($scope, $location, services) {
     $scope.isLoggedin = isLoggedin();
     $scope.removeAlert = function () {
@@ -181,6 +191,7 @@ app.controller('loginController', function ($scope, $location, services) {
     }
 });
 
+//home controller
 app.controller('homeController', function ($scope, $location, services) {
     $scope.isLoggedin = isLoggedin();
     $scope.removeAlert = function () {
